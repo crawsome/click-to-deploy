@@ -14,6 +14,9 @@
 #
 # Cloud SQL Setup
 
+# remove the root directory created by the Cloud SDK setup
+rm -d -r /root/.config/
+
 # Download the proxy binary
 # https://cloud.google.com/sql/docs/mysql/connect-compute-engine#gce-connect-proxy
 remote_file '/opt/c2d/downloads/cloud_sql_proxy' do
