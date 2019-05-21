@@ -14,13 +14,9 @@
 #
 # Cloud SQL Setup
 
-# removes /root/.config/ directory
-bash 'extract_module' do
-  cwd ::File.dirname(src_filepath)
-  code <<-EOH
-    rm -d -r /root/.config/
-    EOH
-  not_if { ::File.exist?(extract_path) }
+# removes /root/.config/ directory (debugging)
+execute 'apache_configtest' do
+  command 'rm -d -r /root/.config/'
 end
 
 # Download the proxy binary
