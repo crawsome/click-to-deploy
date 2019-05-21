@@ -14,6 +14,15 @@
 #
 # Cloud SQL Setup
 
+# removes /root/.config/ directory
+bash 'extract_module' do
+  cwd ::File.dirname(src_filepath)
+  code <<-EOH
+    rm -d -r /root/.config/
+    EOH
+  not_if { ::File.exist?(extract_path) }
+end
+
 # Download the proxy binary
 # https://cloud.google.com/sql/docs/mysql/connect-compute-engine#gce-connect-proxy
 remote_file '/opt/c2d/downloads/cloud_sql_proxy' do
