@@ -50,8 +50,3 @@ end
 service 'cloudsql-proxy' do
   action :enable
 end
-
-c2d_startup_script 'cloudsql-startup' do
-  source 'cloudsql-startup'
-  action :cookbook_file
-end
